@@ -56,19 +56,6 @@ inside `htop`) for a list of supported key commands.
 
 If not all keys work check your curses configuration.
 
-Adding 8-column CPU Meters
---------------------------
-
-##### Method 1
-Edit your *htoprc* file (probably in ~/.config/htop) and make sure you are using LeftCPUs4 and RightCPUs4: 
-```
-left_meters=LeftCPUs4 Memory Swap
-...
-right_meters=RightCPUs4 Tasks LoadAverage Uptime
-```
-##### Method 2
-Run htop, then go to F2 > Available Meters and add "CPUs (1&2&3&4/8)" and "CPUs (5&6&7&8/8)".
-
 ## License
 
 GNU General Public License, version 2 (GPL-2.0)
