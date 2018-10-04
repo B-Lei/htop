@@ -190,29 +190,18 @@ static void QuadColCPUsMeter_draw(Meter* this, int x, int y, int w) {
    int start, count;
    int pad = this->pl->settings->headerMargin ? 2 : 0;
    AllCPUsMeter_getRange(this, &start, &count);
-   int factor = 4;
-   int height = (count+1)/factor;
+   int height = (count+1)/4;
    int startY = y;
-   // Draw each column manually.
-   // Note that "(w-1)/factor" handles resizing width, it rounds down for odds.
    for (int i = 0; i < height; i++) {
-      meters[i]->draw(meters[i], x, y, (w-pad)/factor);
+      meters[i]->draw(meters[i], x, y, (w-pad)/4);
       y += meters[i]->h;
    }
-   y = startY;
-   for (int i = height; i < 2*height; i++) {
-      meters[i]->draw(meters[i], x+(w-1)/factor+2+(pad/factor), y, (w-pad)/factor);
-      y += meters[i]->h;
-   }
-   y = startY;
-   for (int i = 2*height; i < 3*height; i++) {
-      meters[i]->draw(meters[i], x+2*(w-1)/factor+2+(pad/factor), y, (w-pad)/factor);
-      y += meters[i]->h;
-   }
-   y = startY;
-   for (int i = 3*height; i < count; i++) {
-      meters[i]->draw(meters[i], x+3*(w-1)/factor+2+(pad/factor), y, (w-pad)/factor);
-      y += meters[i]->h;
+   for (int i = 1; i < 4; i++) {
+      y = startY;
+      for (int j = i*height; j < (i+1)*height; j++) {
+         meters[j]->draw(meters[j], x+i*(w-1)/4+2+(pad/4), y, (w-pad)/4);
+         y += meters[j]->h;
+      }
    }
 }
 

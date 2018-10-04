@@ -103,6 +103,8 @@ MeterClass* Platform_meterTypes[] = {
    &RightCPUsMeter_class,
    &LeftCPUs2Meter_class,
    &RightCPUs2Meter_class,
+   &LeftCPUs4Meter_class,
+   &RightCPUs4meter_class,
    &BlankMeter_class,
    NULL
 };
